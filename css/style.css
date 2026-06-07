@@ -431,10 +431,32 @@ body {
   align-items: center;
   justify-content: center;
   padding: 44px;
-  border-left: 1px solid var(--accent-border);
-  background: rgba(200,240,60,0.03);
+  border-left: 1px solid rgba(255, 255, 255, 0.08); /* Replaced variable with a clean, semi-translucent dark border */
+  background: rgba(200, 240, 60, 0.03);
   min-width: 180px;
-  gap: 10px;
+  gap: 12px;
+}
+
+/* SVG Logo Styling */
+.adobe-logo {
+  width: 48px;
+  height: 48px;
+  fill: #FF0000; /* Official Adobe Red */
+  transition: transform 0.2s ease;
+}
+
+/* Subtle hover interaction */
+.adobe-brand:hover .adobe-logo {
+  transform: scale(1.05);
+}
+
+/* Muted corporate tracking label */
+.adobe-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a0aec0;
 }
 .adobe-brand i {
   font-size: 3.5rem;
