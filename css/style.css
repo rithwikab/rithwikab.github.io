@@ -442,12 +442,14 @@ body {
   width: 48px;
   height: 48px;
   fill: #FF0000; /* Official Adobe Red */
+  display: block;
   transition: transform 0.2s ease;
 }
 
 /* Subtle hover interaction */
 .adobe-brand:hover .adobe-logo {
   transform: scale(1.05);
+  fill: #FF0000;
 }
 
 /* Muted corporate tracking label */
