@@ -441,7 +441,7 @@ body {
 .adobe-logo {
   width: 48px;
   height: 48px;
-  fill: #FF0000; /* Official Adobe Red */
+  fill: #FF0000 !important; /* Official Adobe Red */
   display: block;
   transition: transform 0.2s ease;
 }
@@ -449,7 +449,7 @@ body {
 /* Subtle hover interaction */
 .adobe-brand:hover .adobe-logo {
   transform: scale(1.05);
-  fill: #FF0000;
+  fill: #FF0000 !important;
 }
 
 /* Muted corporate tracking label */
