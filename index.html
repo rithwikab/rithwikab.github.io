@@ -152,21 +152,17 @@
         </div>
       </div>
 
-      <div class="screenshot-block d-flex flex-column align-items-center justify-content-center text-center" style="padding: 44px 36px;">
-        <div class="sdk-visual">
-          <div class="sdk-before">
-            <span class="sdk-label">Before</span>
-            <div class="sdk-bar full"></div>
-            <span class="sdk-size">100% tokens</span>
+      <div class="screenshot-block">
+        <div id="sdkCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active"><img src="assets/sdk-dashboard.png" alt="SDK Dashboard"></div>
           </div>
-          <div class="sdk-arrow"><i class="bi bi-arrow-down" style="color:var(--accent);font-size:1.4rem;"></i></div>
-          <div class="sdk-after">
-            <span class="sdk-label">After</span>
-            <div class="sdk-bar compressed"></div>
-            <span class="sdk-size accent">15% tokens · 85% saved</span>
+          <div class="carousel-nav-row">
+            <button class="carousel-btn" type="button" data-bs-target="#sdkCarousel" data-bs-slide="prev"><i class="bi bi-chevron-left"></i></button>
+            <div class="carousel-indicators-custom" id="sdk-dots"></div>
+            <button class="carousel-btn" type="button" data-bs-target="#sdkCarousel" data-bs-slide="next"><i class="bi bi-chevron-right"></i></button>
           </div>
         </div>
-        <p style="font-size:0.8rem;color:var(--text-dim);margin-top:28px;font-family:var(--font-mono);">tool-minifier-sdk</p>
       </div>
     </div>
 
@@ -372,6 +368,7 @@ function buildDots(carouselId, dotContainerId) {
     container.querySelectorAll('.cdot').forEach((d, i) => d.classList.toggle('active', i === e.to));
   });
 }
+buildDots('sdkCarousel', 'sdk-dots');
 buildDots('reconCarousel', 'recon-dots');
 buildDots('hrCarousel', 'hr-dots');
 

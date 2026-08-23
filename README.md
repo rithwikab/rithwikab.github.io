@@ -1,148 +1,81 @@
-# Rithwika Bodiga
+# Rithwika Bodiga — Portfolio
 
-Backend-focused Software Engineer with experience building financial systems, workflow automation platforms, and AI-powered business applications.
+Backend Engineer · Gold Medalist (B.Tech CSE) · Adobe PPO  
+[rithwikab.github.io](https://rithwikab.github.io) · [LinkedIn](https://linkedin.com/in/rithwika-bodiga) · [GitHub](https://github.com/rithwikab) · [bodiga.rithwika@gmail.com](mailto:bodiga.rithwika@gmail.com)
+
+---
 
 ## About
 
-I enjoy building systems that remove manual work and improve operational efficiency.
-
-My interests include:
-
-* Backend Engineering
-* Distributed Systems
-* Financial Technology
-* API Design
-* AI Integration
-* System Reliability
+Backend-focused engineer who builds systems that replace manual work. I've automated enterprise onboarding pipelines at Adobe, shipped a production-grade financial reconciliation engine, published an open-source npm SDK that cuts LLM API costs by up to 85%, and built AI-powered task management platforms. My PGDM in Finance & Analytics means I understand the business problems I'm solving, not just the code.
 
 ---
 
-## Featured Projects
+## Projects
 
-### Payment Reconciliation System
+### Tool Minifier SDK · [npm](#) · [GitHub](https://github.com/rithwikab)
 
-Production-style reconciliation engine built using Node.js, Express.js, MongoDB, Docker, JWT Authentication and RBAC.
+Open-source npm package and licensing platform that compresses structured data sent to AI models, reducing tokens per request by up to 85%.
 
-Highlights:
-
-* Async ingestion pipeline
-* Idempotent transaction processing
-* Audit logging
-* Batch tracking
-* Transaction-to-invoice matching
-* Role-based access control
-* Dockerized deployment
-
-Repository:
-
-https://github.com/rithwikab/Backend_Projects/tree/main/payments-reconciliation
+- Published SDK + MCP proxy that automatically compresses data before it reaches LLM APIs
+- Offline-verifiable licensing system with real-time revocation
+- **Stack:** TypeScript · Node.js · React.js · MCP · REST API · Cryptography
 
 ---
 
-### AI-Powered HR Jira
+### Payment Reconciliation System · [GitHub](https://github.com/rithwikab/Backend_Projects/tree/main/payments-reconciliation)
 
-Task management and onboarding platform with role-based access control and AI-assisted workflows.
+Production-style backend reconciliation engine for processing and validating high-volume financial records.
 
-Highlights:
-
-* OpenAI-powered task classification
-* JWT authentication
-* Notification workflows
-* Employee onboarding
-* Role-based permissions
-* Fallback handling for AI failures
-
-Repository:
-
-https://github.com/rithwikab/Backend_Projects/tree/main/HR_JIRA
+- Dockerized pipeline processing 25K+ records at ~1.2s avg latency
+- Idempotent ingestion with deterministic hashing — duplicate-safe and fault-tolerant
+- Audit logging, batch tracking, transaction-to-invoice matching, RBAC
+- **Stack:** Node.js · Express.js · MongoDB Atlas · Docker · JWT · RBAC
 
 ---
 
-## Professional Experience
+### AI-Powered HR Task Platform · [GitHub](https://github.com/rithwikab/Backend_Projects/tree/main/HR_JIRA)
 
-### Adobe India
+Task management and onboarding platform with AI-assisted classification and secure role-based workflows.
 
-CXM Technology Consultant Intern
-
-* Reduced onboarding time by ~95%
-* Built API-driven workflow automation solutions
-* Processed and validated 10,000+ records
-* Developed reporting dashboards
-* Received a Pre-Placement Offer (PPO)
-
-### Oxane Partners
-
-Portfolio Management Intern
-
-* Worked with financial operations and reconciliation workflows
-* Built SQL-based reporting and data management solutions
-* Developed deeper understanding of financial systems and business processes
+- OpenAI-powered task categorisation with async fallback handling for AI failures
+- JWT auth, RBAC, real-time notification system, employee onboarding workflows
+- **Stack:** Node.js · Express.js · MongoDB · OpenAI API · JWT · RBAC
 
 ---
 
-## Technical Skills
+## Experience
 
-### Languages
+### Adobe India — CXM Technology Consultant Intern *(Jun–Aug 2022)*
+- Reduced onboarding turnaround by ~95% through API-driven workflow automation
+- Processed and validated 10,000+ onboarding records
+- Built reporting dashboards in Power BI
+- Received a Pre-Placement Offer (PPO) for technical contribution
+- **Stack:** REST APIs · Power Automate · Power BI · Excel
 
-* Java
-* JavaScript (Node.js)
-* SQL
+### Oxane Partners — Portfolio Management Intern *(Jan–May 2026)*
+- Built SQL-driven reconciliation workflows automating validation across 70+ CRE debt portfolios
+- Reduced manual verification effort across multi-institutional financial datasets using VBA
+- **Stack:** SQL · VBA · Excel
 
-### Backend
+---
 
-* Node.js
-* Express.js
-* REST APIs
-* JWT Authentication
-* RBAC
+## Skills
 
-### Databases
-
-* MongoDB
-* MySQL
-
-### Infrastructure
-
-* Docker
-* Redis
-* BullMQ
-* Git
-
-### AI
-
-* OpenAI APIs
-* Prompt Engineering
-* Structured Outputs
-* LLM Integration
+| Area | Technologies |
+|---|---|
+| Languages | TypeScript · JavaScript · Java · SQL |
+| Backend | Node.js · Express.js · REST APIs · BullMQ |
+| Databases & Cache | MongoDB · PostgreSQL · Redis |
+| Infra & Auth | Docker · AWS · Git · JWT · RBAC |
+| AI / SDKs | OpenAI API · MCP · LLM Integration · Prompt Engineering |
 
 ---
 
 ## Education
 
-### B.Tech – Computer Science & Engineering
+**B.Tech, Computer Science & Engineering** — KMIT, Hyderabad *(2019–2023)*  
+College Topper · Gold Medalist · CGPA 8.66/10
 
-Keshav Memorial Institute of Technology
-
-College Topper (CGPA 8.66)
-
-### PGDM – Finance & Analytics
-
-Institute of Public Enterprise
-
-CAT 94.84 Percentile
-
----
-
-## Links
-
-Portfolio:
-https://rithwikab.github.io
-
-LinkedIn:
-https://linkedin.com/in/rithwika-bodiga
-
-GitHub:
-https://github.com/rithwikab
-
-Email:
-[bodiga.rithwika@gmail.com](mailto:bodiga.rithwika@gmail.com)
+**PGDM, Finance & Analytics** — IPE, Hyderabad *(2024–2026)*  
+87.71% · CAT 94.84 Percentile
