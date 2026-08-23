@@ -18,7 +18,7 @@
     <div class="d-flex align-items-center gap-3">
       <a href="#work" class="nav-link-custom">Work</a>
       <a href="#contact" class="nav-link-custom">Contact</a>
-      <a href="resume/Rithwika_Bodiga_Resume.pdf" target="_blank" class="btn-resume">Resume <i class="bi bi-arrow-up-right"></i></a>
+      <a href="resume/Rithwika_B_Resume.pdf" target="_blank" class="btn-resume">Resume <i class="bi bi-arrow-up-right"></i></a>
     </div>
   </div>
 </nav>
@@ -33,8 +33,8 @@
       <p class="hero-sub">Backend engineer who builds systems that replace manual work. Adobe-intern with a pre-placement offer. I don't prototype — I ship.</p>
       <div class="hero-stats">
         <div class="stat-pill">95% onboarding reduction @ Adobe</div>
-        <div class="stat-pill">25K+ records processed</div>
-        <div class="stat-pill">Node · Express · MongoDB · Docker</div>
+        <div class="stat-pill">Published npm SDK · 85% token compression</div>
+        <div class="stat-pill">Node · TypeScript · MongoDB · Docker</div>
       </div>
       <div class="hero-cta">
         <a href="#work" class="btn-primary-custom">See my work</a>
@@ -50,7 +50,7 @@
   <div class="container">
     <div class="hook-grid">
       <div class="hook-item">
-        <span class="hook-num">3+</span>
+        <span class="hook-num">4+</span>
         <span class="hook-label">Production-style backend systems</span>
       </div>
       <div class="hook-sep"></div>
@@ -60,12 +60,12 @@
       </div>
       <div class="hook-sep"></div>
       <div class="hook-item">
-        <span class="hook-num">~1.2s</span>
-        <span class="hook-label">Avg. latency on reconciliation engine</span>
+        <span class="hook-num">85%</span>
+        <span class="hook-label">Token compression on published npm SDK</span>
       </div>
       <div class="hook-sep"></div>
       <div class="hook-item">
-        <span class="hook-num">Jun '25</span>
+        <span class="hook-num">Now</span>
         <span class="hook-label">Available immediately</span>
       </div>
     </div>
@@ -106,10 +106,67 @@
         </div>
       </div>
       <div class="project-brand adobe-brand">
-        <svg class="adobe-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14.5 3H21v18l-6.5-15H11L4.5 21H3V3h11.5zM12 11.7l3.8 8.3h-7.6l3.8-8.3z"/>
-        </svg>
+        <i class="bi bi-layers-half"></i>
         <span>Adobe</span>
+      </div>
+    </div>
+
+    <!-- TOOL MINIFIER SDK -->
+    <div class="project-card">
+      <div class="project-card-inner">
+        <div class="project-meta">
+          <span class="project-tag">Open Source · Published</span>
+          <div class="d-flex gap-3">
+            <a href="https://github.com/rithwikab/tool-minifier-sdk" target="_blank" class="project-gh"><i class="bi bi-github"></i> GitHub</a>
+            <a href="https://tool-minifier-sdk-demo.vercel.app/" target="_blank" class="project-gh"><i class="bi bi-box-seam"></i> demo</a>
+          </div>
+        </div>
+        <h3 class="project-name">Tool Minifier SDK</h3>
+        <p class="project-desc">Published open-source npm package that compresses structured data sent to AI models by up to 85%, directly reducing API costs per request. Ships with a licensing platform featuring offline-verifiable licenses and real-time revocation.</p>
+
+        <div class="architecture-flow">
+          <span>Client SDK</span>
+          <i class="bi bi-arrow-right"></i>
+          <span>Compression Layer</span>
+          <i class="bi bi-arrow-right"></i>
+          <span>MCP Proxy</span>
+          <i class="bi bi-arrow-right"></i>
+          <span>LLM API</span>
+          <i class="bi bi-arrow-right"></i>
+          <span>License Verifier</span>
+        </div>
+
+        <div class="project-tech-row">
+          <span class="tech-chip">TypeScript</span>
+          <span class="tech-chip">Node.js</span>
+          <span class="tech-chip">React.js</span>
+          <span class="tech-chip">MCP</span>
+          <span class="tech-chip">REST API</span>
+          <span class="tech-chip">Cryptography</span>
+        </div>
+
+        <div class="project-results">
+          <div class="result-item"><strong>85%</strong> reduction in tokens sent to LLMs</div>
+          <div class="result-item"><strong>Published</strong> on npm · open source</div>
+          <div class="result-item"><strong>Offline-verifiable</strong> licensing + revocation</div>
+        </div>
+      </div>
+
+      <div class="screenshot-block d-flex flex-column align-items-center justify-content-center text-center" style="padding: 44px 36px;">
+        <div class="sdk-visual">
+          <div class="sdk-before">
+            <span class="sdk-label">Before</span>
+            <div class="sdk-bar full"></div>
+            <span class="sdk-size">100% tokens</span>
+          </div>
+          <div class="sdk-arrow"><i class="bi bi-arrow-down" style="color:var(--accent);font-size:1.4rem;"></i></div>
+          <div class="sdk-after">
+            <span class="sdk-label">After</span>
+            <div class="sdk-bar compressed"></div>
+            <span class="sdk-size accent">15% tokens · 85% saved</span>
+          </div>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-dim);margin-top:28px;font-family:var(--font-mono);">tool-minifier-sdk</p>
       </div>
     </div>
 
@@ -167,11 +224,6 @@
             <button class="carousel-btn" type="button" data-bs-target="#reconCarousel" data-bs-slide="next"><i class="bi bi-chevron-right"></i></button>
           </div>
         </div>
-        <div class="callout-container">
-        <p class="callout-text">
-        Features an ad-hoc JSON payload ingestion interface built specifically for manual operational overrides, mapping directly to the underlying high-throughput async processing workers.
-        </p>
-        </div>
       </div>
     </div>
 
@@ -183,7 +235,7 @@
           <a href="https://github.com/rithwikab/Backend_Projects/tree/main/HR_JIRA" target="_blank" class="project-gh"><i class="bi bi-github"></i> GitHub</a>
         </div>
         <h3 class="project-name">AI-Powered HR Task Platform</h3>
-        <p class="project-desc">Full-stack task management system featuring OpenAI classification, engineered with strict JSON schema enforcement for Deterministic Outputs and circuit-breaking API Failure Fallbacks to protect core system availability.</p>
+        <p class="project-desc">Full-stack task management system with OpenAI-driven intelligent classification, onboarding workflows, in-app notifications, and RBAC — modelled after how real HR tools work.</p>
 
         <div class="architecture-flow">
           <span>Frontend</span>
@@ -250,24 +302,24 @@
           <p class="skills-title">Technical stack</p>
           <div class="skills-grid">
             <div class="skill-group">
-              <span class="skill-group-label">Backend</span>
-              <span>Node.js · Express.js · REST APIs</span>
+              <span class="skill-group-label">Languages</span>
+              <span>TypeScript · JavaScript · Java · SQL</span>
             </div>
             <div class="skill-group">
-              <span class="skill-group-label">Databases</span>
-              <span>MongoDB Atlas · PostgreSQL</span>
+              <span class="skill-group-label">Backend</span>
+              <span>Node.js · Express.js · REST APIs · BullMQ</span>
+            </div>
+            <div class="skill-group">
+              <span class="skill-group-label">Databases & Cache</span>
+              <span>MongoDB Atlas · PostgreSQL · Redis</span>
             </div>
             <div class="skill-group">
               <span class="skill-group-label">Infra & Auth</span>
-              <span>Docker · JWT · RBAC</span>
+              <span>Docker · AWS · JWT · RBAC</span>
             </div>
             <div class="skill-group">
-              <span class="skill-group-label">AI / Integrations</span>
-              <span>OpenAI API · Power Automate</span>
-            </div>
-            <div class="skill-group">
-              <span class="skill-group-label">Analytics</span>
-              <span>Power BI · Excel · Python</span>
+              <span class="skill-group-label">AI / SDKs</span>
+              <span>LLM Integration · MCP · OpenAI API</span>
             </div>
           </div>
         </div>
@@ -287,7 +339,7 @@
         <a href="https://linkedin.com/in/rithwika-bodiga" target="_blank" class="contact-link-btn"><i class="bi bi-linkedin"></i> LinkedIn</a>
         <a href="https://github.com/rithwikab" target="_blank" class="contact-link-btn"><i class="bi bi-github"></i> GitHub</a>
       </div>
-      <a href="resume/Rithwika_Bodiga_Resume.pdf" target="_blank" class="btn-primary-custom mt-4 d-inline-block">Download Resume</a>
+      <a href="resume/Rithwika_B_Resume.pdf" target="_blank" class="btn-primary-custom mt-4 d-inline-block">Download Resume</a>
     </div>
   </div>
 </section>
