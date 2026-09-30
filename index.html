@@ -3,13 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rithwika Bodiga — Backend Engineer</title>
-<meta name="description" content="Rithwika Bodiga — backend engineer building reconciliation engines, AI-powered platforms and open-source tooling.">
+<title>Rithwika Bodiga — Product-minded Engineer</title>
+<meta name="description" content="Rithwika Bodiga — product-minded engineer with a finance background. Projects, PRDs and code for payment reconciliation, AI cost reduction and HR workflow automation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<style>
+  /* project cards: screenshot carousel on the card, like the previous version */
+  .work-card { display: flex; flex-direction: column; height: 100%; }
+  .work-card .work-btn { height: auto; }
+  .work.is-featured .work-card { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+  .work.is-featured .work-btn { display: flex; }
+  .card-track { display: flex; height: 100%; transition: transform .35s ease; }
+  .card-track .img-wrap { flex: 0 0 100%; transition: transform .45s ease; }
+  .work-card:hover .card-track .img-wrap { transform: scale(1.03); }
+  .card-hit { position: absolute; inset: 0; z-index: 1; cursor: zoom-in; }
+  .work-thumb .gallery-nav { z-index: 2; bottom: 10px; }
+  @media (max-width: 860px) {
+    .work.is-featured .work-card { display: flex; gap: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { .card-track { transition: none; } }
+</style>
 </head>
 <body>
 
@@ -34,19 +50,22 @@
       <div class="home-grid">
         <div class="home-main">
           <h1 id="home-title" class="hero-name" tabindex="-1"><span>Rithwika</span> <span>Bodiga</span></h1>
-          <p class="typed" aria-label="Backend Engineer based in Hyderabad, India"><span id="typed" aria-hidden="true"></span><span class="caret" aria-hidden="true">|</span></p>
+          <p class="typed" aria-label="Product-minded engineer based in Hyderabad, India"><span id="typed" aria-hidden="true"></span><span class="caret" aria-hidden="true">|</span></p>
           <p class="hero-intro">
-            I'm a backend engineer who builds systems that remove operational friction: financial
-            reconciliation engines, AI-powered platforms and open-source tooling shipped to production.
-            I work with
+            I start with the person who has the problem and ship the system that solves it.
+            A finance degree put me on the side of the teams chasing mismatched payments; a CS degree
+            lets me build the fix. Each project here comes with a PRD for the why and code for the how.
+          </p>
+          <p class="hero-stack">
+            Built with
             <mark class="hl hl-sky">Node.js</mark> + <mark class="hl hl-sky">TypeScript</mark> +
             <mark class="hl hl-leaf">Express</mark> + <mark class="hl hl-leaf">MongoDB</mark> +
             <mark class="hl hl-sun">Redis</mark> + <mark class="hl hl-sun">BullMQ</mark> +
-            <mark class="hl hl-blossom">Docker</mark> + <mark class="hl hl-blossom">AWS</mark>.
+            <mark class="hl hl-blossom">Docker</mark> + <mark class="hl hl-blossom">AWS</mark>
           </p>
           <div class="hero-actions">
             <a href="#/portfolio" class="btn btn-primary">See my work</a>
-            <a href="#/experience" class="btn btn-outline">Experience</a>
+            <a href="prd/payment-reconciliation.html" class="btn btn-outline">Read a PRD</a>
           </div>
         </div>
 
@@ -55,11 +74,11 @@
           <ul class="now-list">
             <li>
               <span class="now-key">Looking for</span>
-              Full-time backend engineering roles, available immediately
+              Product management and backend engineering roles, available immediately
             </li>
             <li>
               <span class="now-key">Latest build</span>
-              <a href="https://tool-minifier-pro.onrender.com/" target="_blank" rel="noopener">Token Minifier</a>, live on Render
+              <a href="https://payment-reconciliation-gyk4.onrender.com" target="_blank" rel="noopener">Payment reconciliation engine</a>, live, with a <a href="prd/payment-reconciliation.html">PRD</a>
             </li>
             <li>
               <span class="now-key">Most recently</span>
@@ -67,8 +86,8 @@
             </li>
           </ul>
           <dl class="now-facts">
-            <div><dt>Faster onboarding at Adobe</dt><dd>95%</dd></div>
-            <div><dt>Token compression, npm SDK</dt><dd>85%</dd></div>
+            <div><dt>Less customer onboarding time at Adobe</dt><dd>95%</dd></div>
+            <div><dt>Fewer tokens per AI call, npm SDK</dt><dd>85%</dd></div>
             <div><dt>Records reconciled per run</dt><dd>25K+</dd></div>
           </dl>
         </aside>
@@ -148,7 +167,7 @@
     <section class="view" data-view="portfolio" aria-labelledby="port-title" hidden>
       <div class="page-head">
         <h1 id="port-title" tabindex="-1">Portfolio</h1>
-        <p class="page-intro">Backend systems I’ve designed and shipped, from reconciliation pipelines to AI tooling.</p>
+        <p class="page-intro">Each project starts with a user problem. Read the PRD for the why, or the code for the how.</p>
       </div>
 
       <div class="content">
@@ -176,9 +195,9 @@
       <div class="content">
         <div class="resume-top">
           <p class="resume-summary">
-            Backend engineer with a finance background. My PGDM in Finance &amp; Analytics means I
-            treat the product spec as a starting point, not a constraint, because I've sat on the
-            other side of the table.
+            Engineer with a finance background who writes the PRD before the code. My PGDM in Finance
+            &amp; Analytics put me on the user's side of the table; my CS degree and Adobe internship taught
+            me to ship the fix.
           </p>
           <a href="resume/Rithwika_B_Resume.pdf" target="_blank" rel="noopener" class="btn btn-primary">
             <i class="bi bi-download" aria-hidden="true"></i> Download PDF
@@ -247,7 +266,7 @@
 
       <div class="content contact-grid">
         <div>
-          <p class="contact-lead">Open to backend engineering roles, starting immediately.</p>
+          <p class="contact-lead">Open to product management and backend engineering roles, starting immediately.</p>
           <ul class="contact-list">
             <li><a href="mailto:bodiga.rithwika@gmail.com"><i class="bi bi-envelope" aria-hidden="true"></i><span>bodiga.rithwika@gmail.com</span></a></li>
             <li><a href="https://linkedin.com/in/rithwika-bodiga" target="_blank" rel="noopener"><i class="bi bi-linkedin" aria-hidden="true"></i><span>linkedin.com/in/rithwika-bodiga</span></a></li>
@@ -317,8 +336,9 @@ const PROJECTS = [
     id: 'recon',
     title: 'Payment Reconciliation Engine',
     cat: 'fintech', catLabel: 'Fintech',
-    summary: 'Idempotent async pipeline reconciling 25K+ records per run at ~1.2s.',
-    desc: 'Async pipeline that reconciles 25K+ financial records per run at ~1.2s average latency. Ingestion is idempotent through deterministic hashing, so duplicates are safe and failures can be retried without double-counting.',
+    summary: 'Lets finance teams close without manual matching or double-counted re-uploads. 25K+ records per run in ~1.2s.',
+    prd: 'prd/payment-reconciliation.html',
+    desc: 'Finance teams often match payments in spreadsheets, where a re-uploaded file quietly double-counts and nobody can say who changed what. This engine queues uploads, reconciles 25K+ records per run at ~1.2s average and shows what matched and what didn’t. Every record is fingerprinted so re-uploads are always safe, and every action is logged for auditors.',
     flow: ['Client', 'Idempotency', 'Async queue', 'MongoDB'],
     stack: ['Node.js', 'Express', 'MongoDB', 'Docker', 'BullMQ', 'JWT', 'RBAC'],
     images: ['assets/reconciliation-dashboard.png', 'assets/reconciliation-upload.png', 'assets/reconciliation-audit.png', 'assets/reconciliation-users.png'],
@@ -330,8 +350,9 @@ const PROJECTS = [
     id: 'sdk',
     title: 'Tool Minifier SDK',
     cat: 'oss', catLabel: 'Open source',
-    summary: 'npm package that cuts LLM token usage by up to 85%.',
-    desc: 'Published npm package that compresses structured data sent to AI models by up to 85%, cutting API cost per request. Ships with offline-verifiable licensing and real-time revocation.',
+    summary: 'Cuts the cost of AI calls by shrinking the structured data sent to the model, by up to 85%, with no rewrite.',
+    prd: 'prd/tool-minifier-sdk.html',
+    desc: 'Developers building AI agents pay for every token of tool definitions and JSON they send to the model. This published npm package compresses that structured data by up to 85% at the boundary between app and model, as an SDK or an MCP proxy, so nobody has to rewrite their tools. A Pro tier uses license keys that verify offline and can be revoked in real time.',
     flow: ['Client SDK', 'Compression', 'MCP proxy', 'LLM API'],
     stack: ['TypeScript', 'Node.js', 'React', 'MCP', 'Cryptography'],
     images: ['assets/sdk-dashboard.png'],
@@ -343,8 +364,9 @@ const PROJECTS = [
     id: 'hr',
     title: 'AI-Powered HR Task Platform',
     cat: 'ai', catLabel: 'AI',
-    summary: 'Task platform with OpenAI classification and role-based access.',
-    desc: 'Task management platform with OpenAI-driven task classification, onboarding workflows, in-app notifications and role-based access. Falls back gracefully when the AI service is unavailable.',
+    summary: 'AI sorts incoming HR requests so the team doesn’t have to, and work keeps flowing when the AI is down.',
+    prd: 'prd/hr-task-platform.html',
+    desc: 'HR teams read and sort a steady stream of requests by hand, and onboarding steps slip through. Here OpenAI categorises each new task using structured output, onboarding follows a fixed workflow and everyone gets an “assigned to me” view with notifications. The AI only labels; people make every decision, and a fallback keeps tasks moving if the AI call fails.',
     flow: ['Frontend', 'Express API', 'MongoDB', 'OpenAI', 'Structured output'],
     stack: ['Node.js', 'Express', 'MongoDB', 'OpenAI API', 'JWT', 'RBAC'],
     images: ['assets/hr-dashboard.png', 'assets/hr-tasks.png', 'assets/hr-assigned-tasks.png', 'assets/hr-create-task.png', 'assets/hr-notifications.png', 'assets/hr-register-user.png'],
@@ -370,22 +392,52 @@ const works = document.getElementById('works');
 PROJECTS.forEach(p => {
   const li = document.createElement('li');
   li.className = 'work'; li.dataset.cat = p.cat;
+  const card = document.createElement('div');
+  card.className = 'work-card';
+
+  // screenshot carousel on the card
+  const thumb = document.createElement('div');
+  thumb.className = 'work-thumb';
+  const cardTrack = document.createElement('div');
+  cardTrack.className = 'card-track';
+  p.images.forEach((src, i) => cardTrack.appendChild(safeImg(src, `${p.title} screenshot ${i + 1}`, p.title)));
+  thumb.appendChild(cardTrack);
+  let cur = 0;
+  const hit = document.createElement('button');
+  hit.type = 'button'; hit.className = 'card-hit'; hit.tabIndex = -1;
+  hit.setAttribute('aria-hidden', 'true');
+  thumb.appendChild(hit);
+  if (p.images.length > 1) {
+    thumb.insertAdjacentHTML('beforeend',
+      `<div class="gallery-nav">
+         <button type="button" class="g-btn" data-dir="-1" aria-label="Previous ${p.title} screenshot"><i class="bi bi-chevron-left"></i></button>
+         <span class="g-count">1 / ${p.images.length}</span>
+         <button type="button" class="g-btn" data-dir="1" aria-label="Next ${p.title} screenshot"><i class="bi bi-chevron-right"></i></button>
+       </div>`);
+    const count = thumb.querySelector('.g-count');
+    thumb.querySelectorAll('.g-btn').forEach(b => b.addEventListener('click', e => {
+      e.stopPropagation();
+      cur = (cur + Number(b.dataset.dir) + p.images.length) % p.images.length;
+      cardTrack.style.transform = `translateX(-${cur * 100}%)`;
+      count.textContent = `${cur + 1} / ${p.images.length}`;
+    }));
+  }
+  card.appendChild(thumb);
+
   const btn = document.createElement('button');
   btn.type = 'button'; btn.className = 'work-btn';
   btn.setAttribute('aria-label', `${p.title}, open details`);
-  const thumb = document.createElement('div');
-  thumb.className = 'work-thumb';
-  thumb.appendChild(safeImg(p.images[0], '', p.title));
-  btn.appendChild(thumb);
   btn.insertAdjacentHTML('beforeend',
     `<span class="work-info">
        <span class="work-cat"><mark class="hl ${CAT_COLOR[p.cat]}">${p.catLabel}</mark></span>
        <span class="work-title">${p.title}</span>
        <span class="work-summary">${p.summary}</span>
-       <span class="work-meta">${p.live ? '<span class="dot" aria-hidden="true"></span>Live site' : `${p.images.length} screenshots`}<span class="work-open">Open details</span></span>
+       <span class="work-meta">${p.live ? '<span class="dot" aria-hidden="true"></span>Live site' : `${p.images.length} screenshots`}<span class="work-prd">· PRD</span><span class="work-open">Open details</span></span>
      </span>`);
-  btn.addEventListener('click', () => openModal(p, btn));
-  li.appendChild(btn); works.appendChild(li);
+  btn.addEventListener('click', () => openModal(p, btn, cur));
+  hit.addEventListener('click', () => openModal(p, btn, cur));
+  card.appendChild(btn);
+  li.appendChild(card); works.appendChild(li);
 });
 
 document.querySelectorAll('.filter').forEach(f => f.addEventListener('click', () => {
@@ -414,11 +466,11 @@ function showSlide(i) {
 document.getElementById('m-prev').addEventListener('click', () => showSlide(slide - 1));
 document.getElementById('m-next').addEventListener('click', () => showSlide(slide + 1));
 
-function openModal(p, opener) {
+function openModal(p, opener, start = 0) {
   lastFocus = opener;
   track.innerHTML = '';
   p.images.forEach((src, i) => track.appendChild(safeImg(src, `${p.title} screenshot ${i + 1}`, p.title)));
-  slides = p.images.length; showSlide(0);
+  slides = p.images.length; showSlide(start);
   document.getElementById('m-nav').hidden = slides < 2;
 
   const cat = document.getElementById('m-cat');
@@ -429,14 +481,15 @@ function openModal(p, opener) {
   document.getElementById('m-chips').innerHTML = p.stack.map(s => `<li>${s}</li>`).join('');
 
   const note = document.getElementById('m-note');
-  note.textContent = p.live ? (p.liveNote || '') : 'No public deployment yet. Use the arrows to browse screenshots from the app.';
+  note.textContent = p.live ? (p.liveNote || '') : 'No public deployment yet. Use the arrows to browse screenshots of the app.';
   note.hidden = !note.textContent;
 
   const actions = document.getElementById('m-actions');
   actions.innerHTML = '';
   if (p.live) actions.insertAdjacentHTML('beforeend', `<a class="btn btn-primary" href="${p.live}" target="_blank" rel="noopener">View project</a>`);
-  if (p.extra) actions.insertAdjacentHTML('beforeend', `<a class="btn btn-outline" href="${p.extra.href}" target="_blank" rel="noopener">${p.extra.label}</a>`);
-  actions.insertAdjacentHTML('beforeend', `<a class="btn ${p.live ? 'btn-outline' : 'btn-primary'}" href="${p.code}" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i> Source code</a>`);
+  actions.insertAdjacentHTML('beforeend', `<a class="btn ${p.live ? 'btn-outline' : 'btn-primary'}" href="${p.prd}"><i class="bi bi-file-earmark-text" aria-hidden="true"></i> Read the PRD</a>`);
+  actions.insertAdjacentHTML('beforeend', `<a class="btn btn-outline" href="${p.code}" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i> Source code</a>`);
+  if (p.extra) actions.insertAdjacentHTML('beforeend', `<a class="text-link m-extra" href="${p.extra.href}" target="_blank" rel="noopener">${p.extra.label}</a>`);
 
   modal.hidden = false;
   document.body.classList.add('no-scroll');
@@ -462,7 +515,7 @@ document.addEventListener('keydown', e => {
 });
 
 /* ── ROUTER (#/home, #/experience, #/portfolio, #/resume, #/contacts) ── */
-const TITLES = { home: 'Rithwika Bodiga — Backend Engineer', experience: 'Experience — Rithwika Bodiga', portfolio: 'Portfolio — Rithwika Bodiga', resume: 'Resume — Rithwika Bodiga', contacts: 'Contacts — Rithwika Bodiga' };
+const TITLES = { home: 'Rithwika Bodiga — Product-minded Engineer', experience: 'Experience — Rithwika Bodiga', portfolio: 'Portfolio — Rithwika Bodiga', resume: 'Resume — Rithwika Bodiga', contacts: 'Contacts — Rithwika Bodiga' };
 let firstLoad = true;
 function route() {
   let name = (location.hash.replace(/^#\/?/, '') || 'home').toLowerCase();
@@ -484,7 +537,7 @@ route();
 /* ── TYPED LINE ── */
 (function typed() {
   const el = document.getElementById('typed');
-  const lines = ['Based in Hyderabad, India', 'Backend engineer', 'Adobe PPO · Gold medalist', 'Finance meets backend'];
+  const lines = ['Based in Hyderabad, India', 'Product-minded engineer', 'Finance + computer science', 'Adobe PPO · Gold medalist'];
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = lines[0]; return; }
   let li = 0, ci = 0, del = false;
   (function tick() {

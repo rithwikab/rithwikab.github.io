@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Powered HR Task Platform PRD — Rithwika Bodiga</title>
+<meta name="description" content="Help HR teams stop sorting requests by hand: new tasks are categorised automatically, onboarding follows a set path, and everyone can see what’s theirs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="frame">
+  <header class="site-nav">
+    <a href="../index.html#/home" class="nav-logo" aria-label="Home">RB<span>.</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="../index.html#/experience">Experience</a>
+      <a href="../index.html#/portfolio" aria-current="page">Portfolio</a>
+      <a href="../index.html#/resume">Resume</a>
+      <a href="../index.html#/contacts">Contacts</a>
+    </nav>
+    <a href="../index.html#/contacts" class="nav-status"><span class="dot" aria-hidden="true"></span>Open to roles</a>
+  </header>
+
+  <main>
+    <a class="prd-back" href="../index.html#/portfolio"><i class="bi bi-arrow-left" aria-hidden="true"></i> All projects</a>
+    <div class="prd-head">
+      <p class="prd-kind"><mark class="hl hl-blossom">Product requirements</mark></p>
+      <h1>AI-Powered HR Task Platform</h1>
+      <p class="prd-oneliner">Help HR teams stop sorting requests by hand: new tasks are categorised automatically, onboarding follows a set path, and everyone can see what’s theirs.</p>
+      <dl class="prd-meta">
+        <div><dt>Status</dt><dd><span class="pill pill-leaf">Shipped</span></dd></div>
+        <div><dt>Owner</dt><dd>Rithwika Bodiga, product and engineering</dd></div>
+        <div><dt>Type</dt><dd>Personal project · screenshots, no public deployment yet</dd></div>
+        <div><dt>Last updated</dt><dd>September 2026</dd></div>
+      </dl>
+      <div class="prd-actions"><a class="btn btn-outline" href="https://github.com/rithwikab/Backend_Projects/tree/main/HR_JIRA" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i> Source code</a><button type="button" class="btn btn-outline" onclick="window.print()"><i class="bi bi-printer" aria-hidden="true"></i> Save as PDF</button></div>
+    </div>
+
+    <div class="prd-layout">
+      <nav class="prd-toc" aria-label="On this page">
+        <p class="prd-toc-title">On this page</p>
+        <ol><li><a href="#problem">Problem</a></li><li><a href="#users">Users</a></li><li><a href="#goals">Goals and non-goals</a></li><li><a href="#requirements">Requirements</a></li><li><a href="#metrics">Success metrics</a></li><li><a href="#decisions">Key decisions and trade-offs</a></li><li><a href="#tech">Technical design</a></li><li><a href="#risks">Risks and mitigations</a></li><li><a href="#next">What’s next</a></li></ol>
+      </nav>
+      <article class="prd-body">
+        <section id="problem" class="prd-sec"><h2>Problem</h2>
+<p>HR operations teams handle a steady stream of requests: onboarding steps, document requests, access, policy questions. They arrive unstructured, often by email or chat, and someone has to read each one, decide what it is and pass it on.</p>
+<ul class="prd-list">
+  <li><strong>Triage eats time.</strong> Categorising requests by hand is repetitive and slow.</li>
+  <li><strong>Onboarding steps get missed.</strong> Without a fixed sequence, new joiners have different first weeks.</li>
+  <li><strong>Ownership is unclear.</strong> People aren’t sure what’s assigned to them, and managers can’t see what’s stuck.</li>
+</ul>
+<h3>Insight</h3>
+<p>Categorising a request is exactly the kind of judgement a language model does well and cheaply. Deciding what happens to a person is not. So the AI labels the work, and people own every decision after that.</p></section><section id="users" class="prd-sec"><h2>Users</h2><div class="table-wrap"><table class="prd-table"><thead><tr><th scope="col">Who</th><th scope="col">What they do</th><th scope="col">What they need</th></tr></thead><tbody><tr><td><strong>HR operations executive</strong> (primary)</td><td>Creates and assigns tasks, runs onboarding</td><td>Less manual sorting and a clear queue</td></tr><tr><td><strong>HR manager</strong></td><td>Oversees the team’s work</td><td>A view of what’s open, assigned and overdue</td></tr><tr><td><strong>Employee or new joiner</strong></td><td>Completes tasks assigned to them</td><td>One place to see their tasks, plus a nudge when something new arrives</td></tr><tr><td><strong>Admin</strong></td><td>Registers users and sets roles</td><td>Control over who can see and do what</td></tr></tbody></table></div></section><section id="goals" class="prd-sec"><h2>Goals and non-goals</h2>
+<div class="two-col">
+  <div>
+    <h3>Goals</h3>
+    <ol class="prd-list">
+      <li>Cut manual triage by categorising new tasks automatically.</li>
+      <li>Make onboarding a repeatable workflow.</li>
+      <li>Make it obvious to everyone what’s assigned to them.</li>
+      <li>Never let an AI outage stop work.</li>
+    </ol>
+  </div>
+  <div>
+    <h3>Not in v1</h3>
+    <ul class="prd-list">
+      <li>Payroll, leave or a full HR system of record</li>
+      <li>AI making decisions about people</li>
+      <li>A chat assistant for employees</li>
+    </ul>
+  </div>
+</div></section><section id="requirements" class="prd-sec"><h2>Requirements</h2><div class="table-wrap"><table class="prd-table"><thead><tr><th scope="col">Priority</th><th scope="col">Requirement</th><th scope="col">Why it matters</th><th scope="col">Status</th></tr></thead><tbody><tr><td>P0</td><td>Create a task and have AI assign its category</td><td>Removes the most repetitive step in triage</td><td><span class="pill pill-leaf">Shipped</span></td></tr><tr><td>P0</td><td>Fall back gracefully when the AI service fails</td><td>Work must never be blocked by a third-party outage</td><td><span class="pill pill-leaf">Shipped</span></td></tr><tr><td>P0</td><td>Onboarding workflows</td><td>Every new joiner gets the same complete first week</td><td><span class="pill pill-leaf">Shipped</span></td></tr><tr><td>P0</td><td>“Assigned to me” view</td><td>Clear ownership for every task</td><td><span class="pill pill-leaf">Shipped</span></td></tr><tr><td>P0</td><td>In-app notifications for new and updated tasks</td><td>People act on tasks without chasing</td><td><span class="pill pill-leaf">Shipped</span></td></tr><tr><td>P0</td><td>Role-based access and admin user registration</td><td>HR data is sensitive, so access must be deliberate</td><td><span class="pill pill-leaf">Shipped</span></td></tr><tr><td>P1</td><td>Let a person correct the AI’s category</td><td>Keeps humans in charge and creates data to improve accuracy</td><td><span class="pill pill-sky">Planned</span></td></tr><tr><td>P1</td><td>Due dates with reminders</td><td>Stops tasks from going stale</td><td><span class="pill pill-sky">Planned</span></td></tr><tr><td>P2</td><td>Public demo deployment</td><td>Lets reviewers try it instead of reading screenshots</td><td><span class="pill pill-sky">Planned</span></td></tr></tbody></table></div></section><section id="metrics" class="prd-sec"><h2>Success metrics</h2><div class="table-wrap"><table class="prd-table"><thead><tr><th scope="col">Metric</th><th scope="col">Why it matters</th><th scope="col">Status</th></tr></thead><tbody><tr><td>AI category matches what an HR person would choose</td><td>Measures whether automation can be trusted</td><td><span class="pill pill-sky">Track in pilot</span></td></tr><tr><td>Share of tasks that never need a manual re-categorisation</td><td>The real measure of triage time saved</td><td><span class="pill pill-sky">Track in pilot</span></td></tr><tr><td>Onboarding tasks completed on time</td><td>Whether the workflow actually prevents missed steps</td><td><span class="pill pill-sky">Track in pilot</span></td></tr><tr><td>Share of tasks that hit the AI fallback</td><td>Early warning on AI reliability and cost</td><td><span class="pill pill-sky">Track in pilot</span></td></tr><tr><td>No task lost or blocked when the AI is down</td><td>Reliability promise to the HR team</td><td><span class="pill pill-blossom">Guardrail</span></td></tr></tbody></table></div><p class="prd-note">This project hasn’t had real users yet, so these are the metrics I’d instrument for a first pilot rather than results.</p></section><section id="decisions" class="prd-sec"><h2>Key decisions and trade-offs</h2>
+<dl class="decisions">
+  <div><dt>AI labels, people decide</dt>
+  <dd>The model only suggests a category. Assignment and anything that affects an employee stays with a person. <em>Trade-off:</em> less automation than possible, in exchange for trust in a sensitive domain.</dd></div>
+  <div><dt>Structured output instead of free text</dt>
+  <dd>The model has to answer in a fixed format with a category from a known list. That makes results predictable and easy to validate. <em>Trade-off:</em> adding a new category means updating the list.</dd></div>
+  <div><dt>Fallback instead of failure</dt>
+  <dd>If the AI call fails or times out, the task still goes through without the automatic label, so work continues. <em>Trade-off:</em> some tasks need manual categorisation during an outage.</dd></div>
+  <div><dt>Classify once, at creation</dt>
+  <dd>Each task is sent to the model once, which keeps cost predictable and latency out of every other screen.</dd></div>
+</dl></section><section id="tech" class="prd-sec"><h2>Technical design</h2><div class="flow"><span>Frontend</span><i class="bi bi-chevron-right" aria-hidden="true"></i><span>Express API · JWT + RBAC</span><i class="bi bi-chevron-right" aria-hidden="true"></i><span>MongoDB</span><i class="bi bi-chevron-right" aria-hidden="true"></i><span>OpenAI (structured output)</span><i class="bi bi-chevron-right" aria-hidden="true"></i><span>Category saved on task</span></div>
+<ul class="prd-list">
+  <li><strong>API layer:</strong> Node.js and Express, with JWT sessions and role checks on every route.</li>
+  <li><strong>Classification:</strong> on task creation, the task text is sent to OpenAI with a fixed output format. The returned category is validated before it’s saved.</li>
+  <li><strong>Fallback:</strong> classification failures are caught and handled asynchronously, so saving the task never depends on the AI call.</li>
+  <li><strong>Data:</strong> users, tasks, onboarding workflows and notifications live in MongoDB.</li>
+  <li><strong>Screens:</strong> dashboard, task list, assigned tasks, create task, notifications, user registration.</li>
+</ul>
+<p class="prd-stack">Node.js · Express · MongoDB · OpenAI API · JWT · RBAC</p></section><section id="risks" class="prd-sec"><h2>Risks and mitigations</h2><div class="table-wrap"><table class="prd-table"><thead><tr><th scope="col">Risk</th><th scope="col">Mitigation</th></tr></thead><tbody><tr><td>The AI puts a task in the wrong category</td><td>People make every decision that matters. Planned: one-click correction.</td></tr><tr><td>Personal data is sent to a third-party model</td><td>Send only the task text needed to categorise it. Planned: strip names and IDs before the call.</td></tr><tr><td>AI costs grow with task volume</td><td>Classify each task once, at creation, never on every view.</td></tr><tr><td>The AI service is down</td><td>Fallback path keeps tasks flowing without the label.</td></tr></tbody></table></div></section><section id="next" class="prd-sec"><h2>What’s next</h2>
+<ol class="prd-list">
+  <li><strong>Human correction</strong> of AI categories, logged so accuracy can be measured and improved.</li>
+  <li><strong>Due dates and reminders</strong> for tasks and onboarding steps.</li>
+  <li><strong>A public demo</strong> so reviewers can try it directly.</li>
+</ol></section>
+        <aside class="prd-more">
+          <p>Other write-ups</p>
+          <ul><li><a href="payment-reconciliation.html">Payment Reconciliation Engine</a></li><li><a href="tool-minifier-sdk.html">Tool Minifier SDK</a></li></ul>
+        </aside>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 Rithwika Bodiga. All rights reserved.</span>
+    <ul class="socials">
+      <li><a href="https://linkedin.com/in/rithwika-bodiga" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a></li>
+      <li><a href="https://github.com/rithwikab" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a></li>
+      <li><a href="mailto:bodiga.rithwika@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a></li>
+    </ul>
+  </footer>
+</div>
+</body>
+</html>

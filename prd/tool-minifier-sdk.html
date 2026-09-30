@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tool Minifier SDK PRD — Rithwika Bodiga</title>
+<meta name="description" content="Cut the cost of every AI call by shrinking the structured data developers send to language models, without changing how they build.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="frame">
+  <header class="site-nav">
+    <a href="../index.html#/home" class="nav-logo" aria-label="Home">RB<span>.</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="../index.html#/experience">Experience</a>
+      <a href="../index.html#/portfolio" aria-current="page">Portfolio</a>
+      <a href="../index.html#/resume">Resume</a>
+      <a href="../index.html#/contacts">Contacts</a>
+    </nav>
+    <a href="../index.html#/contacts" class="nav-status"><span class="dot" aria-hidden="true"></span>Open to roles</a>
+  </header>
+
+  <main>
+    <a class="prd-back" href="../index.html#/portfolio"><i class="bi bi-arrow-left" aria-hidden="true"></i> All projects</a>
+    <div class="prd-head">
+      <p class="prd-kind"><mark class="hl hl-leaf">Product requirements</mark></p>
+      <h1>Tool Minifier SDK</h1>
+      <p class="prd-oneliner">Cut the cost of every AI call by shrinking the structured data developers send to language models, without changing how they build.</p>
+      <dl class="prd-meta">
+        <div><dt>Status</dt><dd><span class="pill pill-leaf">Shipped</span></dd></div>
+        <div><dt>Owner</dt><dd>Rithwika Bodiga, product and engineering</dd></div>
+        <div><dt>Type</dt><dd>Open-source npm package · Pro tier in progress</dd></div>
+        <div><dt>Last updated</dt><dd>September 2026</dd></div>
+      </dl>
+      <div class="prd-actions"><a class="btn btn-primary" href="https://tool-minifier-sdk-demo.vercel.app/" target="_blank" rel="noopener">View project</a><a class="btn btn-outline" href="https://github.com/rithwikab" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i> Source code</a><button type="button" class="btn btn-outline" onclick="window.print()"><i class="bi bi-printer" aria-hidden="true"></i> Save as PDF</button></div>
+    </div>
+
+    <div class="prd-layout">
+      <nav class="prd-toc" aria-label="On this page">
+        <p class="prd-toc-title">On this page</p>
+        <ol><li><a href="#problem">Problem</a></li><li><a href="#users">Users</a></li><li><a href="#goals">Goals and non-goals</a></li><li><a href="#requirements">Requirements</a></li><li><a href="#metrics">Success metrics</a></li><li><a href="#decisions">Key decisions and trade-offs</a></li><li><a href="#tech">Technical design</a></li><li><a href="#risks">Risks and mitigations</a></li><li><a href="#next">What’s next</a></li></ol>
+      </nav>
+      <article class="prd-body">
+        <section id="problem" class="prd-sec"><h2>Problem</h2>
+<p>AI agents and LLM apps send the same kinds of structured data to the model on every request: tool definitions, JSON results and schemas. Much of it is repeated structure, like the same keys over and over, long descriptions and whitespace. Developers pay for all of it, per token, on every call.</p>
+<ul class="prd-list">
+  <li><strong>Cost grows with usage.</strong> The more successful the product, the bigger the bill for data the model barely needs.</li>
+  <li><strong>Context fills up.</strong> Verbose tool data crowds out the information that actually helps the model answer.</li>
+  <li><strong>Manual fixes don’t last.</strong> Hand-trimming prompts works until the next schema change quietly undoes it.</li>
+</ul>
+<h3>Insight</h3>
+<p>The waste is in the structure, and structure is predictable. So it can be compressed automatically at the one point every request passes through: the boundary between the app and the model.</p></section><section id="users" class="prd-sec"><h2>Users</h2><div class="table-wrap"><table class="prd-table"><thead><tr><th scope="col">Who</th><th scope="col">What they do</th><th scope="col">What they need</th></tr></thead><tbody><tr><td><strong>Developer building an AI agent or LLM app</strong> (primary)</td><td>Wires tools and data into model calls</td><td>Lower cost with no rewrite and no drop in answer quality</td></tr><tr><td><strong>Engineering lead</strong></td><td>Owns the AI budget</td><td>Visible savings they can report upward</td></tr><tr><td><strong>Pro customer</strong></td><td>Pays for advanced features</td><td>Licensing that works offline, in CI and behind firewalls</td></tr></tbody></table></div></section><section id="goals" class="prd-sec"><h2>Goals and non-goals</h2>
+<div class="two-col">
+  <div>
+    <h3>Goals</h3>
+    <ol class="prd-list">
+      <li>Substantially reduce tokens for structured payloads.</li>
+      <li>Keep adoption friction low: install from npm and use it as an SDK or through an MCP proxy.</li>
+      <li>License the Pro tier with keys that verify offline and can still be revoked.</li>
+    </ol>
+  </div>
+  <div>
+    <h3>Not in v1</h3>
+    <ul class="prd-list">
+      <li>Compressing free-form prose</li>
+      <li>Routing between models or acting as an LLM gateway</li>
+      <li>Hosting or fine-tuning models</li>
+    </ul>
+  </div>
+</div></section><section id="requirements" class="prd-sec"><h2>Requirements</h2><div class="table-wrap"><table class="prd-table"><thead><tr><th scope="col">Priority</th><th scope="col">Requirement</th><th scope="col">Why it matters</th><th scope="col">Status</th></tr></thead><tbody><tr><td>P0</td><td>SDK that compresses structured data before the API call</td><td>The core value: fewer tokens per request</td><td><span class="pill pill-leaf">Shipped</span></td></tr><tr><td>P0</td><td>MCP proxy mode</td><td>Tools built on MCP benefit without code changes</td><td><span class="pill pill-leaf">Shipped</span></td></tr><tr><td>P0</td><td>License keys that verify offline</td><td>Works in CI, air-gapped and firewalled environments</td><td><span class="pill pill-leaf">Shipped</span></td></tr><tr><td>P0</td><td>Real-time license revocation</td><td>A leaked key can be shut off without waiting for expiry</td><td><span class="pill pill-leaf">Shipped</span></td></tr><tr><td>P1</td><td>Live demo showing tokens before and after</td><td>Lets a developer see the saving in seconds, not after integrating</td><td><span class="pill pill-leaf">Shipped</span></td></tr><tr><td>P1</td><td>Pro site with plans and sign-up</td><td>Turns adoption into revenue</td><td><span class="pill pill-sun">In progress</span></td></tr><tr><td>P2</td><td>Savings report per model and per tool</td><td>Gives the engineering lead numbers to share</td><td><span class="pill pill-sky">Planned</span></td></tr></tbody></table></div></section><section id="metrics" class="prd-sec"><h2>Success metrics</h2><div class="table-wrap"><table class="prd-table"><thead><tr><th scope="col">Metric</th><th scope="col">Why it matters</th><th scope="col">Status</th></tr></thead><tbody><tr><td>Token reduction on structured payloads: <strong>up to 85%</strong></td><td>The headline value</td><td><span class="pill pill-leaf">Measured</span></td></tr><tr><td>Model still calls tools correctly after compression</td><td>Savings are worthless if answers get worse</td><td><span class="pill pill-blossom">Guardrail</span></td></tr><tr><td>Time from install to first compressed call</td><td>Measures adoption friction</td><td><span class="pill pill-sky">Track in pilot</span></td></tr><tr><td>Weekly npm downloads and active installs</td><td>Top-of-funnel adoption</td><td><span class="pill pill-sky">Track in pilot</span></td></tr><tr><td>Free to Pro conversion</td><td>Whether the business model works</td><td><span class="pill pill-sky">Track in pilot</span></td></tr></tbody></table></div><p class="prd-note">The 85% figure is measured on structured payloads. Savings on mixed or prose-heavy requests will be lower.</p></section><section id="decisions" class="prd-sec"><h2>Key decisions and trade-offs</h2>
+<dl class="decisions">
+  <div><dt>Compress at the boundary, not in the app</dt>
+  <dd>Sitting between the app and the model means developers don’t touch their tools or prompts. <em>Trade-off:</em> the SDK has to understand many payload shapes instead of one.</dd></div>
+  <div><dt>Two ways in: SDK and MCP proxy</dt>
+  <dd>The SDK suits teams calling models directly. The proxy suits teams already on MCP who want zero code changes. Offering both widens the funnel at the cost of two surfaces to maintain.</dd></div>
+  <div><dt>Keys that verify offline</dt>
+  <dd>Cryptographically signed keys are checked locally, so there’s no network call and no added latency. <em>Trade-off:</em> an offline check can’t see a revoked key on its own, so a separate real-time revocation check covers that gap.</dd></div>
+  <div><dt>Free package, paid Pro tier</dt>
+  <dd>A free npm package earns adoption and trust. Pro features carry the revenue.</dd></div>
+</dl></section><section id="tech" class="prd-sec"><h2>Technical design</h2><div class="flow"><span>Client app</span><i class="bi bi-chevron-right" aria-hidden="true"></i><span>SDK: compression</span><i class="bi bi-chevron-right" aria-hidden="true"></i><span>MCP proxy</span><i class="bi bi-chevron-right" aria-hidden="true"></i><span>LLM API</span></div>
+<ul class="prd-list">
+  <li><strong>SDK:</strong> TypeScript package on npm. Compresses structured payloads before they’re sent to the model.</li>
+  <li><strong>MCP proxy:</strong> sits in front of MCP tool traffic and applies the same compression, so existing MCP setups need no code changes.</li>
+  <li><strong>Licensing:</strong> signed keys verified locally with a public key, plus a real-time revocation check.</li>
+  <li><strong>Demo:</strong> a React dashboard on Vercel that shows token usage before and after compression.</li>
+</ul>
+<p class="prd-stack">TypeScript · Node.js · MCP · React · cryptographic signing · npm · Vercel</p></section><section id="risks" class="prd-sec"><h2>Risks and mitigations</h2><div class="table-wrap"><table class="prd-table"><thead><tr><th scope="col">Risk</th><th scope="col">Mitigation</th></tr></thead><tbody><tr><td>Some models misread compressed structure</td><td>Planned: an evaluation suite that checks tool-call accuracy per model before a release.</td></tr><tr><td>Model providers change how they count tokens</td><td>Planned: re-run the benchmark per model and publish the results.</td></tr><tr><td>Developers are wary of a proxy that sees their data</td><td>Planned: document clearly what data the SDK and proxy touch and where it goes.</td></tr><tr><td>Pro features get copied from the open-source code</td><td>Keep Pro value in the licensed features, and keep the free tier genuinely useful.</td></tr></tbody></table></div></section><section id="next" class="prd-sec"><h2>What’s next</h2>
+<ol class="prd-list">
+  <li><strong>Launch the Pro site</strong> with plans, sign-up and key management.</li>
+  <li><strong>Publish benchmarks</strong> per model, including the accuracy guardrail, so developers can trust the numbers.</li>
+  <li><strong>Savings report</strong> that engineering leads can share with finance.</li>
+</ol></section>
+        <aside class="prd-more">
+          <p>Other write-ups</p>
+          <ul><li><a href="payment-reconciliation.html">Payment Reconciliation Engine</a></li><li><a href="hr-task-platform.html">AI-Powered HR Task Platform</a></li></ul>
+        </aside>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 Rithwika Bodiga. All rights reserved.</span>
+    <ul class="socials">
+      <li><a href="https://linkedin.com/in/rithwika-bodiga" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a></li>
+      <li><a href="https://github.com/rithwikab" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a></li>
+      <li><a href="mailto:bodiga.rithwika@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a></li>
+    </ul>
+  </footer>
+</div>
+</body>
+</html>

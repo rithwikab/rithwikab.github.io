@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Reconciliation Engine PRD — Rithwika Bodiga</title>
+<meta name="description" content="Give finance operations teams one place to upload payment files, see what matches and what doesn’t, and prove every step to an auditor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="frame">
+  <header class="site-nav">
+    <a href="../index.html#/home" class="nav-logo" aria-label="Home">RB<span>.</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="../index.html#/experience">Experience</a>
+      <a href="../index.html#/portfolio" aria-current="page">Portfolio</a>
+      <a href="../index.html#/resume">Resume</a>
+      <a href="../index.html#/contacts">Contacts</a>
+    </nav>
+    <a href="../index.html#/contacts" class="nav-status"><span class="dot" aria-hidden="true"></span>Open to roles</a>
+  </header>
+
+  <main>
+    <a class="prd-back" href="../index.html#/portfolio"><i class="bi bi-arrow-left" aria-hidden="true"></i> All projects</a>
+    <div class="prd-head">
+      <p class="prd-kind"><mark class="hl hl-sun">Product requirements</mark></p>
+      <h1>Payment Reconciliation Engine</h1>
+      <p class="prd-oneliner">Give finance operations teams one place to upload payment files, see what matches and what doesn’t, and prove every step to an auditor.</p>
+      <dl class="prd-meta">
+        <div><dt>Status</dt><dd><span class="pill pill-leaf">Shipped</span></dd></div>
+        <div><dt>Owner</dt><dd>Rithwika Bodiga, product and engineering</dd></div>
+        <div><dt>Type</dt><dd>Personal project · live on Render</dd></div>
+        <div><dt>Last updated</dt><dd>September 2026</dd></div>
+      </dl>
+      <div class="prd-actions"><a class="btn btn-primary" href="https://payment-reconciliation-gyk4.onrender.com" target="_blank" rel="noopener">View project</a><a class="btn btn-outline" href="https://github.com/rithwikab/Backend_Projects/tree/main/payments-reconciliation" target="_blank" rel="noopener"><i class="bi bi-github" aria-hidden="true"></i> Source code</a><button type="button" class="btn btn-outline" onclick="window.print()"><i class="bi bi-printer" aria-hidden="true"></i> Save as PDF</button></div>
+    </div>
+
+    <div class="prd-layout">
+      <nav class="prd-toc" aria-label="On this page">
+        <p class="prd-toc-title">On this page</p>
+        <ol><li><a href="#problem">Problem</a></li><li><a href="#users">Users</a></li><li><a href="#goals">Goals and non-goals</a></li><li><a href="#requirements">Requirements</a></li><li><a href="#flow">User flow</a></li><li><a href="#metrics">Success metrics</a></li><li><a href="#decisions">Key decisions and trade-offs</a></li><li><a href="#tech">Technical design</a></li><li><a href="#risks">Risks and mitigations</a></li><li><a href="#next">What’s next</a></li></ol>
+      </nav>
+      <article class="prd-body">
+        <section id="problem" class="prd-sec"><h2>Problem</h2>
+<p>Reconciliation means confirming that every payment in one set of records has a matching entry in another. In many finance teams it still happens in spreadsheets, and it breaks in three predictable ways:</p>
+<ul class="prd-list">
+  <li><strong>It doesn’t scale.</strong> Effort grows with volume, so month-end turns into a backlog.</li>
+  <li><strong>Re-uploads corrupt the totals.</strong> Uploading the same file twice, or retrying a failed import, creates duplicate records that throw every figure off.</li>
+  <li><strong>There’s no trail.</strong> When an auditor asks who changed a record and when, the answer lives in someone’s memory.</li>
+</ul>
+<p>I saw this class of problem from the finance side, through my PGDM in Finance &amp; Analytics and my internship at Oxane Partners, before building the fix as an engineer.</p>
+<h3>Insight</h3>
+<p>Matching the easy records isn’t the hard part. Trusting the result is. So this product bets on trust: re-uploads that are always safe, a clear list of exceptions, and a full audit trail. It does not bet on a clever matching algorithm.</p></section><section id="users" class="prd-sec"><h2>Users</h2><div class="table-wrap"><table class="prd-table"><thead><tr><th scope="col">Who</th><th scope="col">What they do</th><th scope="col">What they need</th></tr></thead><tbody><tr><td><strong>Finance operations analyst</strong> (primary)</td><td>Uploads payment files and works through mismatches</td><td>Fast results, a clear exception list, confidence that re-uploading won’t double-count</td></tr><tr><td><strong>Finance manager or controller</strong></td><td>Signs off on each run</td><td>A one-screen answer to “are we clean?” and who did what</td></tr><tr><td><strong>Auditor</strong></td><td>Reviews the process after the fact</td><td>A read-only trail they can’t alter</td></tr><tr><td><strong>Admin</strong></td><td>Manages users and roles</td><td>Simple control over who can see and change what</td></tr></tbody></table></div></section><section id="goals" class="prd-sec"><h2>Goals and non-goals</h2>
+<div class="two-col">
+  <div>
+    <h3>Goals</h3>
+    <ol class="prd-list">
+      <li>Reconcile a typical batch in seconds, so analysts never wait on a spinner.</li>
+      <li>Make ingestion safe to repeat: uploading the same file twice changes nothing.</li>
+      <li>Trace every change to a person and a time.</li>
+    </ol>
+  </div>
+  <div>
+    <h3>Not in v1</h3>
+    <ul class="prd-list">
+      <li>Automatically resolving mismatches</li>
+      <li>Direct bank or payment-gateway integrations</li>
+      <li>Multi-currency and FX handling</li>
+      <li>Fuzzy or ML-based matching</li>
+    </ul>
+  </div>
+</div>
+<p class="prd-note">Keeping v1 narrow meant the trust features (idempotency, audit, access control) could be built properly, not bolted on later.</p></section><section id="requirements" class="prd-sec"><h2>Requirements</h2><div class="table-wrap"><table class="prd-table"><thead><tr><th scope="col">Priority</th><th scope="col">Requirement</th><th scope="col">Why it matters</th><th scope="col">Status</th></tr></thead><tbody><tr><td>P0</td><td>Upload payment files and process them in the background</td><td>Large files shouldn’t time out a web request or block the analyst</td><td><span class="pill pill-leaf">Shipped</span></td></tr><tr><td>P0</td><td>Detect and skip duplicate records on every upload</td><td>Re-uploads are the most common way totals go wrong</td><td><span class="pill pill-leaf">Shipped</span></td></tr><tr><td>P0</td><td>Dashboard of matched, unmatched and flagged records per run</td><td>The manager’s first question is whether the books are clean</td><td><span class="pill pill-leaf">Shipped</span></td></tr><tr><td>P0</td><td>Audit log of uploads and changes, with user and timestamp</td><td>Auditors require it, and it settles internal disputes</td><td><span class="pill pill-leaf">Shipped</span></td></tr><tr><td>P0</td><td>Role-based access with separate admin, analyst and viewer rights</td><td>Auditors read, analysts act, admins manage</td><td><span class="pill pill-leaf">Shipped</span></td></tr><tr><td>P1</td><td>Admin screen to add users and assign roles</td><td>Onboarding a teammate shouldn’t need an engineer</td><td><span class="pill pill-leaf">Shipped</span></td></tr><tr><td>P1</td><td>Assign, comment on and resolve individual exceptions</td><td>Turns the exception list into a workflow</td><td><span class="pill pill-sky">Planned</span></td></tr><tr><td>P2</td><td>Scheduled imports and a notification when a run finishes</td><td>Removes the daily manual upload</td><td><span class="pill pill-sky">Planned</span></td></tr></tbody></table></div></section><section id="flow" class="prd-sec"><h2>User flow</h2>
+<ol class="prd-steps">
+  <li>The analyst uploads a payment file and gets a run ID straight away.</li>
+  <li>The file is queued. A background worker fingerprints each record and skips any it has seen before.</li>
+  <li>New records are matched and the results are saved against the run.</li>
+  <li>The dashboard updates with matched, unmatched and flagged counts.</li>
+  <li>The analyst reviews the exceptions. The manager checks the summary and signs off.</li>
+  <li>Every step above is written to the audit log.</li>
+</ol></section><section id="metrics" class="prd-sec"><h2>Success metrics</h2><div class="table-wrap"><table class="prd-table"><thead><tr><th scope="col">Metric</th><th scope="col">Why it matters</th><th scope="col">Status</th></tr></thead><tbody><tr><td>Records processed per run: <strong>25K+</strong></td><td>Proves the engine handles a realistic month-end batch</td><td><span class="pill pill-leaf">Measured</span></td></tr><tr><td>Average processing latency: <strong>~1.2s</strong></td><td>Analysts get results without waiting</td><td><span class="pill pill-leaf">Measured</span></td></tr><tr><td>Duplicate records created by a re-upload: <strong>0</strong></td><td>The core trust promise</td><td><span class="pill pill-leaf">By design</span></td></tr><tr><td>Share of records matched automatically</td><td>Shows how much manual work is actually removed</td><td><span class="pill pill-sky">Track in pilot</span></td></tr><tr><td>Time from upload to a signed-off run</td><td>North-star metric: how fast a team can close</td><td><span class="pill pill-sky">Track in pilot</span></td></tr></tbody></table></div><p class="prd-note">Measured figures come from test runs. The rest are the metrics I’d instrument with a real finance team.</p></section><section id="decisions" class="prd-sec"><h2>Key decisions and trade-offs</h2>
+<dl class="decisions">
+  <div><dt>Background queue instead of processing in the request</dt>
+  <dd>Big files would time out a normal web request. Moving work to a BullMQ queue keeps uploads instant. <em>Trade-off:</em> it needs Redis, and the interface has to show job status.</dd></div>
+  <div><dt>Fingerprint every record instead of trusting source IDs</dt>
+  <dd>Files from different sources don’t share reliable IDs, so each record gets a deterministic hash of its identifying fields. The same record always produces the same hash, which makes duplicates easy to reject. <em>Trade-off:</em> two genuinely different payments with identical fields would collide, so the hashed fields have to be chosen carefully.</dd></div>
+  <div><dt>Audit log from day one</dt>
+  <dd>An append-only log is cheap to build early and expensive to retrofit. It also turned out to be the fastest way to debug my own test runs.</dd></div>
+  <div><dt>MongoDB for storage</dt>
+  <dd>Payment files vary in shape by source, and a document store absorbs that without migrations. <em>Trade-off:</em> fewer relational guarantees, so uniqueness is enforced on the hash itself.</dd></div>
+</dl></section><section id="tech" class="prd-sec"><h2>Technical design</h2><div class="flow"><span>Client</span><i class="bi bi-chevron-right" aria-hidden="true"></i><span>Express API · JWT + RBAC</span><i class="bi bi-chevron-right" aria-hidden="true"></i><span>BullMQ queue (Redis)</span><i class="bi bi-chevron-right" aria-hidden="true"></i><span>Worker: hash, dedupe, match</span><i class="bi bi-chevron-right" aria-hidden="true"></i><span>MongoDB</span></div>
+<ul class="prd-list">
+  <li><strong>API layer:</strong> Node.js and Express. Every route checks a JWT and then the user’s role before doing anything.</li>
+  <li><strong>Ingestion:</strong> uploads are accepted and queued at once. Workers process records asynchronously and can retry safely because ingestion is idempotent.</li>
+  <li><strong>Idempotency:</strong> a deterministic hash per record acts as its key. A record whose hash already exists is skipped, not inserted again.</li>
+  <li><strong>Data:</strong> records, runs, users and the audit log live in MongoDB.</li>
+  <li><strong>Deployment:</strong> Docker for a consistent build, hosted on Render.</li>
+</ul>
+<p class="prd-stack">Node.js · Express · BullMQ · Redis · MongoDB · JWT · Docker · Render</p></section><section id="risks" class="prd-sec"><h2>Risks and mitigations</h2><div class="table-wrap"><table class="prd-table"><thead><tr><th scope="col">Risk</th><th scope="col">Mitigation</th></tr></thead><tbody><tr><td>Free hosting sleeps when idle, so the first load is slow</td><td>Visitors are warned on the portfolio. A pilot would move to an always-on plan.</td></tr><tr><td>Two different payments hash to the same fingerprint</td><td>Hash enough identifying fields to make it practically impossible. Planned: flag possible collisions for review instead of skipping them silently.</td></tr><tr><td>Very large files strain memory</td><td>Planned: stream-parse uploads in chunks instead of loading the whole file.</td></tr><tr><td>A role is set up with too much access</td><td>New users start with the least access, and only admins can change roles.</td></tr></tbody></table></div></section><section id="next" class="prd-sec"><h2>What’s next</h2>
+<ol class="prd-list">
+  <li><strong>Exception workflow:</strong> assign, comment on and resolve each mismatch, all captured in the audit log.</li>
+  <li><strong>Tolerance matching:</strong> match amounts and dates within a configurable tolerance, with the reason shown.</li>
+  <li><strong>Connectors:</strong> pull statements from banks and payment gateways instead of uploading files.</li>
+  <li><strong>A pilot:</strong> put it in front of a small finance team and instrument the two “track in pilot” metrics.</li>
+</ol></section>
+        <aside class="prd-more">
+          <p>Other write-ups</p>
+          <ul><li><a href="tool-minifier-sdk.html">Tool Minifier SDK</a></li><li><a href="hr-task-platform.html">AI-Powered HR Task Platform</a></li></ul>
+        </aside>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 Rithwika Bodiga. All rights reserved.</span>
+    <ul class="socials">
+      <li><a href="https://linkedin.com/in/rithwika-bodiga" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a></li>
+      <li><a href="https://github.com/rithwikab" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a></li>
+      <li><a href="mailto:bodiga.rithwika@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a></li>
+    </ul>
+  </footer>
+</div>
+</body>
+</html>

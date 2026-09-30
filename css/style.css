@@ -221,6 +221,9 @@ main { flex: 1; display: flex; flex-direction: column; }
 @keyframes blink { 50% { opacity: 0; } }
 .hero-intro { max-width: 60ch; margin-top: 26px; font-size: 0.93rem; line-height: 1.95; }
 .hero-intro .hl { font-weight: 700; }
+.hero-stack { margin-top: 18px; font-size: 0.82rem; color: var(--ink-2); line-height: 2; }
+.hero-stack .hl { font-weight: 700; color: var(--ink); }
+.m-actions .m-extra { align-self: center; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
 
 .now { border-left: 4px solid var(--leaf); padding: 6px 0 6px 28px; }
@@ -425,6 +428,73 @@ main { flex: 1; display: flex; flex-direction: column; }
 .contact-form .btn { align-self: flex-start; }
 
 /* ──────────────────────────────
+   PRD PAGES
+────────────────────────────── */
+.prd-back { display: inline-flex; gap: 8px; margin-top: 32px; font-size: 0.82rem; color: var(--ink-2); text-decoration: none; }
+.prd-back:hover { color: var(--frame); }
+.prd-head { max-width: 1040px; padding: 28px 0 40px; border-bottom: 1px solid var(--line); }
+.prd-kind { font-size: 0.8rem; }
+.prd-head h1 { margin-top: 12px; font-size: clamp(1.9rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; letter-spacing: 0.02em; text-transform: uppercase; }
+.prd-oneliner { margin-top: 18px; max-width: 62ch; font-size: 1.02rem; line-height: 1.8; }
+.prd-meta { display: flex; flex-wrap: wrap; gap: 14px 40px; margin-top: 28px; }
+.prd-meta dt { font-size: 0.72rem; color: var(--ink-3); }
+.prd-meta dd { font-size: 0.85rem; }
+.prd-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+.prd-layout { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 56px; padding-top: 44px; max-width: 1100px; }
+.prd-toc { position: sticky; top: 24px; align-self: start; font-size: 0.8rem; }
+.prd-toc-title { color: var(--ink-3); margin-bottom: 10px; }
+.prd-toc ol { display: grid; gap: 6px; counter-reset: toc; }
+.prd-toc li { counter-increment: toc; }
+.prd-toc a { text-decoration: none; color: var(--ink-2); }
+.prd-toc a::before { content: counter(toc) ". "; color: var(--ink-3); }
+.prd-toc a:hover { color: var(--frame); }
+
+.prd-body { max-width: 780px; min-width: 0; }
+.prd-sec { padding-bottom: 48px; scroll-margin-top: 24px; }
+.prd-sec + .prd-sec { padding-top: 40px; border-top: 1px solid var(--line); }
+.prd-sec h2 { font-size: 1.25rem; font-weight: 800; margin-bottom: 18px; }
+.prd-sec h3 { font-size: 0.92rem; font-weight: 700; margin: 24px 0 8px; }
+.prd-sec p { font-size: 0.9rem; line-height: 1.9; color: var(--ink-2); max-width: 70ch; }
+.prd-sec p + p { margin-top: 12px; }
+.prd-sec strong { color: var(--ink); }
+.prd-list { display: grid; gap: 10px; margin: 14px 0; padding-left: 1.3em; font-size: 0.88rem; line-height: 1.8; color: var(--ink-2); }
+ul.prd-list { list-style: square; }
+ol.prd-list { list-style: decimal; }
+.prd-list li::marker { color: var(--frame); }
+.prd-steps { counter-reset: step; display: grid; gap: 14px; }
+.prd-steps li { counter-increment: step; display: grid; grid-template-columns: 36px 1fr; font-size: 0.88rem; line-height: 1.8; color: var(--ink-2); }
+.prd-steps li::before { content: counter(step); font-weight: 800; color: var(--frame); }
+.prd-note { margin-top: 16px !important; font-size: 0.8rem !important; color: var(--ink-3) !important; padding-left: 12px; border-left: 3px solid var(--sun); }
+.prd-stack { margin-top: 18px; font-size: 0.78rem !important; color: var(--ink-3) !important; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.two-col h3 { margin-top: 0; }
+
+.table-wrap { overflow-x: auto; margin-top: 6px; }
+.prd-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; line-height: 1.65; }
+.prd-table th { text-align: left; font-weight: 500; font-size: 0.72rem; color: var(--ink-3); padding: 8px 14px 8px 0; border-bottom: 1px solid var(--ink); }
+.prd-table td { vertical-align: top; padding: 12px 14px 12px 0; border-bottom: 1px solid var(--line); color: var(--ink-2); }
+.prd-table td:first-child { white-space: nowrap; }
+.prd-table td:first-child:has(strong) { white-space: normal; min-width: 12ch; }
+.pill { display: inline-block; white-space: nowrap; font-size: 0.72rem; padding: 1px 8px; color: var(--ink); }
+.pill-leaf { background: var(--leaf); }
+.pill-sun { background: var(--sun); }
+.pill-sky { background: var(--sky); }
+.pill-blossom { background: var(--blossom); }
+
+.decisions { display: grid; gap: 22px; }
+.decisions dt { font-weight: 700; font-size: 0.92rem; }
+.decisions dd { margin-top: 6px; font-size: 0.88rem; line-height: 1.85; color: var(--ink-2); }
+.decisions em { font-style: normal; font-weight: 700; color: var(--ink); }
+
+.prd-more { margin-top: 8px; padding: 22px 26px; background: var(--paper-2); font-size: 0.85rem; }
+.prd-more p { color: var(--ink-3); font-size: 0.75rem; margin-bottom: 8px; }
+.prd-more ul { display: grid; gap: 4px; }
+.prd-more a { color: var(--frame); text-underline-offset: 3px; }
+
+.work-prd { color: var(--ink-2); }
+
+/* ──────────────────────────────
    RESPONSIVE
 ────────────────────────────── */
 @media (max-width: 860px) {
@@ -438,6 +508,11 @@ main { flex: 1; display: flex; flex-direction: column; }
   .works { grid-template-columns: 1fr; }
   .work.is-featured .work-btn { display: flex; gap: 0; }
   .work.is-featured .work-info { padding-top: 20px; }
+  .prd-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .prd-table { min-width: 560px; }
+  .prd-toc { position: static; }
+  .prd-toc ol { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .two-col { grid-template-columns: 1fr; gap: 8px; }
 }
 @media (max-width: 600px) {
   :root { --frame-gap: 8px; }
@@ -454,4 +529,14 @@ main { flex: 1; display: flex; flex-direction: column; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
+}
+
+@media print {
+  body { background: #fff; padding: 0; font-size: 12px; }
+  .frame { padding: 0; min-height: 0; }
+  .site-nav, .site-footer, .prd-back, .prd-actions, .prd-toc, .prd-more { display: none !important; }
+  .prd-layout { display: block; padding-top: 20px; }
+  .prd-sec { break-inside: auto; }
+  .prd-table tr, .decisions div { break-inside: avoid; }
+  .hl, .pill { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
